@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>pulse-monitoring-dto</module>
+        <module>pulse-source</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
