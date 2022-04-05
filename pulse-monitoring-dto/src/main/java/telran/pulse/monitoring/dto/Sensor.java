@@ -2,8 +2,9 @@ package telran.pulse.monitoring.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-@NoArgsConstructor
+@ToString
 public class Sensor {
     public int id;
     public int value;
@@ -15,5 +16,8 @@ public class Sensor {
         this.value = value;
         this.seqNum = seqNum;
         timestamp = System.currentTimeMillis();
+    }
+
+    public Sensor() {
     }
 }

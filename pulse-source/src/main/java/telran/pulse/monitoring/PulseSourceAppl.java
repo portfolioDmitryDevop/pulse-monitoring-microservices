@@ -31,6 +31,7 @@ public class PulseSourceAppl {
         if (count > 10) {
             ctx.close();
         }
+        System.out.println("send sensor "+ id);
         return sensor;
     }
 
