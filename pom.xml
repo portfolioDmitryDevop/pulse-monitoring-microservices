@@ -5,6 +5,7 @@
     <modules>
         <module>pulse-monitoring-dto</module>
         <module>pulse-source</module>
+        <module>pulse-monitoring-config-server</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

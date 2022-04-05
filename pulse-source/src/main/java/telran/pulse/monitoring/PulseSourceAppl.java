@@ -28,7 +28,7 @@ public class PulseSourceAppl {
         int id = getRandomNumber(1, 10);
         int value = getRandomNumber(40, 250);
         Sensor sensor = new Sensor(id, value, count++);
-        if (count == 100) {
+        if (count > 10) {
             ctx.close();
         }
         return sensor;
