@@ -40,7 +40,6 @@ public class AnalyserService {
         if (sensorRedis == null) {
             log.debug("for sensor id {} not found record in redis", sensor.id);
             sensorRedis = new SensorRedis(sensor.id);
-            sensorRedis.addCurrentValue(sensor.value);
         } else {
             int lastValue = sensorRedis.getLastValue();
             int delta = Math.abs(lastValue - sensor.value);
@@ -54,9 +53,10 @@ public class AnalyserService {
                     streamBridge.send("critical-jumps-out-0", sensorJump);
                 }
             }
-            sensorRedis.addCurrentValue(sensor.value);
-            sensorRepository.save(sensorRedis);
         }
+        sensorRedis.addCurrentValue(sensor.value);
+        sensorRepository.save(sensorRedis);
+
 //        System.out.printf("sequence number %d, sensor id %d, waiting time %d\n",
 //                sensor.seqNum,
 //                sensor.id,
