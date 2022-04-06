@@ -1,11 +1,15 @@
 package telran.pulse.monitoring.service;
 
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jmx.export.annotation.ManagedOperation;
+import org.springframework.jmx.export.annotation.ManagedResource;
 import org.springframework.stereotype.Service;
 import telran.pulse.monitoring.dto.Sensor;
 import telran.pulse.monitoring.dto.SensorJump;
@@ -16,6 +20,7 @@ import java.util.*;
 import java.util.function.Consumer;
 
 @Service
+@ManagedResource
 @Slf4j
 public class AnalyserService {
 
@@ -24,8 +29,20 @@ public class AnalyserService {
     private StreamBridge streamBridge;
     @Autowired
     private SensorRepository sensorRepository;
+
     @Value("${app.jump.threshold:50}")
     int jumpPercentThreshold;
+
+    @ManagedOperation
+    public int getJumpPercentThreshold() {
+        return jumpPercentThreshold;
+    }
+
+    @ManagedOperation
+    public void setJumpPercentThreshold(int jumpPercentThreshold) {
+        this.jumpPercentThreshold = jumpPercentThreshold;
+    }
+
     @Value("${app.critical.threshold:100}")
     int criticalPercentThreshold;
 
