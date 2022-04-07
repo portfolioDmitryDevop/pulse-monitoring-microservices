@@ -27,7 +27,7 @@ public class PulseSourceAppl {
     private Sensor pulseRandomGeneration() {
         int id = getRandomNumber(1, 10);
         int value = getRandomNumber(40, 250);
-        Sensor sensor = new Sensor(id, value, count++);
+        Sensor sensor = new Sensor(id, value);
 //        if (count > 100) {
 //            ctx.close();
 //        }

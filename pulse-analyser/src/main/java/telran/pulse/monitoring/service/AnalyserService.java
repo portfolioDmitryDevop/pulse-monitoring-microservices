@@ -1,8 +1,6 @@
 package telran.pulse.monitoring.service;
 
 
-import lombok.Getter;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,10 +11,9 @@ import org.springframework.jmx.export.annotation.ManagedResource;
 import org.springframework.stereotype.Service;
 import telran.pulse.monitoring.dto.Sensor;
 import telran.pulse.monitoring.dto.SensorJump;
-import telran.pulse.monitoring.entities.SensorRedis;
+import telran.pulse.monitoring.entities.SensorLastValues;
 import telran.pulse.monitoring.repo.SensorRepository;
 
-import java.util.*;
 import java.util.function.Consumer;
 
 @Service
@@ -53,12 +50,12 @@ public class AnalyserService {
 
     private void pulseProcessing(Sensor sensor) {
         log.trace("Received sensor id {}; value {} ", sensor.id, sensor.value);
-        SensorRedis sensorRedis = sensorRepository.findById(sensor.id).orElse(null);
-        if (sensorRedis == null) {
+        SensorLastValues sensorLastValues = sensorRepository.findById(sensor.id).orElse(null);
+        if (sensorLastValues == null) {
             log.debug("for sensor id {} not found record in redis", sensor.id);
-            sensorRedis = new SensorRedis(sensor.id);
+            sensorLastValues = new SensorLastValues(sensor.id);
         } else {
-            int lastValue = sensorRedis.getLastValue();
+            int lastValue = sensorLastValues.getLastValue();
             int delta = Math.abs(lastValue - sensor.value);
             double percent = (double) delta / lastValue * 100;
             if (percent > jumpPercentThreshold) {
@@ -71,8 +68,8 @@ public class AnalyserService {
                 }
             }
         }
-        sensorRedis.addCurrentValue(sensor.value);
-        sensorRepository.save(sensorRedis);
+        sensorLastValues.setLastValue(sensor.value);
+        sensorRepository.save(sensorLastValues);
 
 //        System.out.printf("sequence number %d, sensor id %d, waiting time %d\n",
 //                sensor.seqNum,
