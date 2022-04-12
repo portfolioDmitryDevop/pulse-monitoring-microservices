@@ -1,13 +1,13 @@
-package telran.pulse.monitor;
+package telran.pulse.monitoring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PulseMonitoringAveragePopulatorApplication {
+public class PulseMonitoringVisitsBackOfficeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PulseMonitoringAveragePopulatorApplication.class, args);
+        SpringApplication.run(PulseMonitoringVisitsBackOfficeApplication.class, args);
     }
 
 }

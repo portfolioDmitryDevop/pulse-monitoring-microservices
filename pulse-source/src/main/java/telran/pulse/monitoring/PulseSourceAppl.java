@@ -6,6 +6,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import telran.pulse.monitoring.dto.Sensor;
 
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Supplier;
 
@@ -13,6 +14,7 @@ import java.util.function.Supplier;
 public class PulseSourceAppl {
 
     int count = 0;
+    Random rnd = new Random();
     static ConfigurableApplicationContext ctx;
 
     public static void main(String[] args) {
