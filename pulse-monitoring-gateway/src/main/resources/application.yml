@@ -3,13 +3,14 @@ spring:
     gateway:
       routes:
         - id: visits
-          uri: http://localhost:8080/
+          uri: http://${VISITS_HOST:localhost}:8080/
           predicates:
             - Path=/visits/**
         - id: sensors
-          uri: http://localhost:8082/
+          uri: http://${SENSORS_HOST:localhost}:8082/
           predicates:
             - Path=/sensors/**
+
 
 server:
   port: 9090

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pulse-monitoring-config
+  labels:
+    app: pulse-monitoring
+data:
+  springProfilesActive: docker
+  redisHost: redis
+  dataProviderURL: http://doctor-data-provider:8080
+  visitsHost: back-office-visits
+  sensorsHost: back-office-sensors
+  userName: devopdimach
+  postgresUserName: xmtfeqbeixxfrj
+  postgresDataBase: d2j8456pl1o4ss
+  postgresHost: ec2-35-168-194-15.compute-1.amazonaws.com
+  

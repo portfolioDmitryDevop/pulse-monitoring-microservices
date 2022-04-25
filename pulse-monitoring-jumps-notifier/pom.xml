@@ -54,6 +54,15 @@
             <artifactId>pulse-monitoring-dto</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.icegreen/greenmail-junit5 -->
+        <dependency>
+            <groupId>com.icegreen</groupId>
+            <artifactId>greenmail-junit5</artifactId>
+            <version>1.6.8</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
     <dependencyManagement>
         <dependencies>

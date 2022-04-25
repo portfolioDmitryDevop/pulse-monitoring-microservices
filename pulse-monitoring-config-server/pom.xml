@@ -8,12 +8,14 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <groupId>telran</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>pulse-monitoring-config-server</name>
+    <description>pulse-monitoring-config-server</description>
     <artifactId>pulse-monitoring-config-server</artifactId>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <java.version>17</java.version>
         <spring-cloud.version>2021.0.1</spring-cloud.version>
     </properties>
     <dependencies>

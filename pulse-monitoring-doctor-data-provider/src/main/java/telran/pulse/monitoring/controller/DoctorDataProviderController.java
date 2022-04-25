@@ -1,5 +1,6 @@
 package telran.pulse.monitoring.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import telran.pulse.monitoring.dto.DoctorPatientData;
 import telran.pulse.monitoring.repo.*;
@@ -13,6 +14,7 @@ public class DoctorDataProviderController {
     PatientRepository patientRepository;
     VisitRepository visitRepository;
 
+    @Autowired
     public DoctorDataProviderController(DoctorRepository doctorRepository, PatientRepository patientRepository, VisitRepository visitRepository) {
         this.doctorRepository = doctorRepository;
         this.patientRepository = patientRepository;

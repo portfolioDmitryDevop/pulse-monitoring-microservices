@@ -1,0 +1,108 @@
+services:
+  config-server:
+    build:
+      pulse-monitoring-config-server
+    mem_limit: 200m
+    mem_reservation: 50m
+
+  redis:
+    image: redis
+
+  pulse-analyser:
+    build:
+     pulse-analyser
+    mem_limit: 200m
+    mem_reservation: 50m
+    environment:
+      - KAFKA_PASSWORD=7Iq3D6sT2aqATbIlKV7KnKQuARSUlzI2
+      - SPRING_PROFILES_ACTIVE=docker
+      - REDIS_HOST=redis
+
+  average-populator:
+    build:
+      pulse-monitoring-average-populator
+    mem_limit: 200m
+    mem_reservation: 50m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - MONGO_PASSWORD=12345.com
+      - KAFKA_PASSWORD=7Iq3D6sT2aqATbIlKV7KnKQuARSUlzI2
+
+  average-reducer:
+    build:
+      pulse-monitoring-avg-reducer
+    mem_limit: 200m
+    mem_reservation: 50m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - KAFKA_PASSWORD=7Iq3D6sT2aqATbIlKV7KnKQuARSUlzI2
+      - REDIS_HOST=redis
+
+  doctor-data-provider:
+    container_name: doctor-data-provider
+    build:
+      pulse-monitoring-doctor-data-provider
+    mem_limit: 200m
+    mem_reservation: 50m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - POSTGRES_PASSWORD=0dcda14aa667aa5d12a98d7ea5d0215b28cf6a921185cd34f3d3b5ead25f6603
+      - POSTGRES_USERNAME=xmtfeqbeixxfrj
+      - POSTGRES_DATABASE=d2j8456pl1o4ss
+      - POSTGRES_HOST=ec2-35-168-194-15.compute-1.amazonaws.com
+
+  pulse-monitoring-gateway:
+    container_name: pulse-monitoring-gateway
+    build:
+      pulse-monitoring-gateway
+    ports:
+      - "9090:9090"
+    mem_limit: 200m
+    mem_reservation: 50m
+    environment:
+      - DATA_PROVIDER_URL=http://doctor-data-provider:8080
+      - VISITS_HOST=back-office-visits
+      - SENSORS_HOST=back-office-sensors
+
+  jumps-notifier:
+    container_name: jumps-notifier
+    build:
+      pulse-monitoring-jumps-notifier
+    mem_limit: 200m
+    mem_reservation: 50m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - KAFKA_PASSWORD=7Iq3D6sT2aqATbIlKV7KnKQuARSUlzI2
+      - USER_NAME=devopdimach
+      - MAIL_PASSWORD=ljkjykgkaowxvpps
+      - DATA_PROVIDER_URL=http://doctor-data-provider:8080
+
+  jumps-populator:
+    container_name: jumps-populator
+    build:
+      pulse-monitoring-jumps-populator
+    mem_limit: 200m
+    mem_reservation: 50m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - MONGO_PASSWORD=12345.com
+      - KAFKA_PASSWORD=7Iq3D6sT2aqATbIlKV7KnKQuARSUlzI2
+
+  back-office-sensors:
+    build:
+      pulse-monitoring-sensor-values-back-office
+    mem_limit: 200m
+    mem_reservation: 50m
+    environment:
+      - MONGO_PASSWORD=12345.com
+
+  back-office-visits:
+    build:
+      pulse-monitoring-visits-back-office
+    mem_limit: 200m
+    mem_reservation: 50m
+    environment:
+      - POSTGRES_PASSWORD=0dcda14aa667aa5d12a98d7ea5d0215b28cf6a921185cd34f3d3b5ead25f6603
+      - POSTGRES_USERNAME=xmtfeqbeixxfrj
+      - POSTGRES_DATABASE=d2j8456pl1o4ss
+      - POSTGRES_HOST=ec2-35-168-194-15.compute-1.amazonaws.com

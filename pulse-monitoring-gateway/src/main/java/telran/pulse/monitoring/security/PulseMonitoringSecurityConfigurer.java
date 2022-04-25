@@ -21,6 +21,7 @@ public class PulseMonitoringSecurityConfigurer {
     protected SecurityWebFilterChain configure(ServerHttpSecurity http) {
         http.httpBasic();
         http.cors().and().csrf().disable();
+   //TODO     http.addFilterBefore()
         http.authorizeExchange().pathMatchers("/login").permitAll();
         http.authorizeExchange().pathMatchers(HttpMethod.GET).hasAnyRole("USER", "ADMIN");
         http.authorizeExchange().anyExchange().hasRole("ADMIN");

@@ -22,10 +22,15 @@ import java.util.function.Consumer;
 public class AnalyserService {
 
 
+
+
+
     @Autowired
     private StreamBridge streamBridge;
     @Autowired
     private SensorRepository sensorRepository;
+
+
 
     @Value("${app.jump.threshold:50}")
     int jumpPercentThreshold;
