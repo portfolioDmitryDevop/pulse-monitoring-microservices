@@ -6,3 +6,36 @@ ADD ./target/courses-service-0.0.1.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
 docker-compose up -d
+
+docker tag pulse-monitoring_doctor-data-provider 0536654467/pulse-monitoring_doctor-data-provider
+docker push 0536654467/pulse-monitoring_doctor-data-provider
+
+docker tag pulse-monitoring_doctor-data-provider 0536654467/pulse-monitoring_doctor-data-provider
+docker tag pulse-monitoring_jumps-notifier 0536654467/pulse-monitoring_jumps-notifier
+
+docker tag pulse-monitoring_jumps-populator 0536654467/pulse-monitoring_jumps-populator
+docker push 0536654467/pulse-monitoring_jumps-populator
+
+docker tag pulse-monitoring_average-populator 0536654467/pulse-monitoring_average-populator
+docker push 0536654467/pulse-monitoring_jumps-notifier
+
+docker tag pulse-monitoring_average-reducer 0536654467/pulse-monitoring_average-reducer
+docker push 0536654467/pulse-monitoring_average-reducer
+
+docker tag pulse-monitoring_back-office-sensors 0536654467/pulse-monitoring_back-office-sensors
+docker push 0536654467/pulse-monitoring_back-office-sensors
+
+docker tag pulse-monitoring_back-office-visits 0536654467/pulse-monitoring_back-office-visits
+docker push 0536654467/pulse-monitoring_back-office-visits
+
+docker tag pulse-monitoring_config-server 0536654467/pulse-monitoring_config-server
+docker push 0536654467/pulse-monitoring_config-server
+
+docker tag pulse-monitoring_pulse-monitoring-gateway 0536654467/pulse-monitoring_pulse-monitoring-gateway
+docker push 0536654467/pulse-monitoring_pulse-monitoring-gateway
+
+docker tag pulse-monitoring_pulse-analyser 0536654467/pulse-monitoring_pulse-analyser
+docker push 0536654467/pulse-monitoring_pulse-analyser
+
+
+

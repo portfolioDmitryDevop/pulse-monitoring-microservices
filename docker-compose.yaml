@@ -14,7 +14,7 @@ services:
     mem_limit: 200m
     mem_reservation: 50m
     environment:
-      - KAFKA_PASSWORD=7Iq3D6sT2aqATbIlKV7KnKQuARSUlzI2
+      - KAFKA_PASSWORD=******
       - SPRING_PROFILES_ACTIVE=docker
       - REDIS_HOST=redis
 
@@ -25,8 +25,8 @@ services:
     mem_reservation: 50m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - MONGO_PASSWORD=12345.com
-      - KAFKA_PASSWORD=7Iq3D6sT2aqATbIlKV7KnKQuARSUlzI2
+      - MONGO_PASSWORD=******
+      - KAFKA_PASSWORD=******
 
   average-reducer:
     build:
@@ -35,7 +35,7 @@ services:
     mem_reservation: 50m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - KAFKA_PASSWORD=7Iq3D6sT2aqATbIlKV7KnKQuARSUlzI2
+      - KAFKA_PASSWORD=******
       - REDIS_HOST=redis
 
   doctor-data-provider:
@@ -46,10 +46,10 @@ services:
     mem_reservation: 50m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - POSTGRES_PASSWORD=0dcda14aa667aa5d12a98d7ea5d0215b28cf6a921185cd34f3d3b5ead25f6603
-      - POSTGRES_USERNAME=xmtfeqbeixxfrj
-      - POSTGRES_DATABASE=d2j8456pl1o4ss
-      - POSTGRES_HOST=ec2-35-168-194-15.compute-1.amazonaws.com
+      - POSTGRES_PASSWORD=******
+      - POSTGRES_USERNAME=******
+      - POSTGRES_DATABASE=******
+      - POSTGRES_HOST=******
 
   pulse-monitoring-gateway:
     container_name: pulse-monitoring-gateway
@@ -72,9 +72,9 @@ services:
     mem_reservation: 50m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - KAFKA_PASSWORD=7Iq3D6sT2aqATbIlKV7KnKQuARSUlzI2
-      - USER_NAME=devopdimach
-      - MAIL_PASSWORD=ljkjykgkaowxvpps
+      - KAFKA_PASSWORD=******
+      - USER_NAME=******
+      - MAIL_PASSWORD=******
       - DATA_PROVIDER_URL=http://doctor-data-provider:8080
 
   jumps-populator:
@@ -85,8 +85,8 @@ services:
     mem_reservation: 50m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - MONGO_PASSWORD=12345.com
-      - KAFKA_PASSWORD=7Iq3D6sT2aqATbIlKV7KnKQuARSUlzI2
+      - MONGO_PASSWORD=******
+      - KAFKA_PASSWORD=******
 
   back-office-sensors:
     build:
@@ -94,7 +94,7 @@ services:
     mem_limit: 200m
     mem_reservation: 50m
     environment:
-      - MONGO_PASSWORD=12345.com
+      - MONGO_PASSWORD=******
 
   back-office-visits:
     build:
@@ -102,7 +102,7 @@ services:
     mem_limit: 200m
     mem_reservation: 50m
     environment:
-      - POSTGRES_PASSWORD=0dcda14aa667aa5d12a98d7ea5d0215b28cf6a921185cd34f3d3b5ead25f6603
-      - POSTGRES_USERNAME=xmtfeqbeixxfrj
-      - POSTGRES_DATABASE=d2j8456pl1o4ss
-      - POSTGRES_HOST=ec2-35-168-194-15.compute-1.amazonaws.com
+      - POSTGRES_PASSWORD=******
+      - POSTGRES_USERNAME=******
+      - POSTGRES_DATABASE=******
+      - POSTGRES_HOST=******

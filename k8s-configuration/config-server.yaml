@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: config-server
-        image:  dmitrydevop/pulse-monitoring_config-server
+        image:  0536654467/pulse-monitoring_config-server
         resources:
           requests: 
             memory: 50Mi

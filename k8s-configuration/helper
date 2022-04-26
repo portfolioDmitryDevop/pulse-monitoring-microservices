@@ -1,8 +1,10 @@
 kubectl apply -f .\config-server.yaml
 kubectl get svc
 kubectl get pods
-kubectl logs config-server-deployment-6cb7449f4f-nsw57
+kubectl logs config-server-deployment-57bfd45cd4-46rmf
 kubectl apply -f .\config-map.yaml
 kubectl apply -f .\visits-back-office.yaml
 kubectl config get-contexts
 kubectl delete -f .
+kubectl logs visits-deployment-7f46bc757b-9zsmx
+
